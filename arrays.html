@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <p class="list">
+
+    </p>
+
+    <p>
+        <input type="text" id="addInput">
+        <button onclick="addToArray();">Add</button>
+    </p>
+
+    <p>
+        <input type="text" id="indexInput">
+        <button onclick="deleteFruit();">Delete</button>
+    </p>
+
+    <div id="test"></div>
+        
+
+    
+    <script>
+        var fruit = ["banaan", "appel", "kiwi", "aardbei"];
+        var groente = ["tomaat", "sla"];
+        var addInput = document.querySelector("#addInput");
+        var indexInput = document.querySelector("#indexInput");
+        var list = document.querySelector(".list");
+
+        function addToArray(){
+            var newFruit = addInput.value;
+            fruit.push(newFruit);
+            addInput.value = "";
+
+            printList();
+        }
+
+        function deleteFruit(){
+            var lookForFruit = indexInput.value;
+            var index = fruit.indexOf(lookForFruit);
+
+            if(index !== -1){
+                fruit.splice(index, 1);
+            } else {
+                console.log("niet gevonden");
+            }
+            
+            printList();
+        }
+
+        function printList(){
+            list.innerHTML = '["' + fruit.join('", "') + '"]';
+        }
+
+        printList();
+    </script>
+</body>
+</html>
